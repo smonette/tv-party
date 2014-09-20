@@ -1,0 +1,7 @@
+.tile {
+  overflow: hidden;
+}
+
+.tile img{
+  width: 100%;
+}
