@@ -69,15 +69,15 @@ module.exports = function (sequelize, DataTypes){
 
   passport.use(new passportLocal.Strategy({
     // must keep as usernameField
-    usernameField: 'username',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true // passes the request callback to the param
   },
-    function(req, username, password, done) {
+    function(req, email, password, done) {
       // find a user in the db
       User.find({
         where: {
-          username: username
+          email: email
         }
       })
       // when thats done
