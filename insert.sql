@@ -8,11 +8,11 @@ VALUES
 
 INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
 VALUES
-  ('Girls','tt1723816','http://kingoftheflatscreen.com/wp-content/uploads/2014/03/Girls-TV-Series-HBO-2560X1600-Wide-Wallpaper.jpg','@girlsHBO','http://en.wikipedia.org/wiki/Girls_(TV_series)');
+  ('Drunk History','tt2712612','http://ib.huluim.com/show_key_art/14658?size=1600x600&region=US','@drunkhistory','http://en.wikipedia.org/wiki/Drunk_History');
 
 INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
 VALUES
-  ('Game of Thrones','tt0944947','','@GameOfThrones','http://en.wikipedia.org/wiki/Game_of_Thrones');
+  ('Jimmy Kimmel','tt0320037','http://ib3.huluim.com/show_key_art/2526?size=1600x600&region=US','@JimmyKimmelLive','http://en.wikipedia.org/wiki/Jimmy_Kimmel_Live!');
 
 INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
 VALUES
@@ -32,4 +32,4 @@ VALUES
 
 INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
 VALUES
-  ('Scandal','tt1837576','http://ib4.huluim.com/show_key_art/4412?size=1600x600&region=US','@ScandalABC','http://en.wikipedia.org/wiki/Scandal_(TV_series)');
+  ('Scandal','tt1837576','http://ib3.huluim.com/show_key_art/9673?size=1600x600&region=US','@ScandalABC','http://en.wikipedia.org/wiki/Scandal_(TV_series)');
