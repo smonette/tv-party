@@ -1,0 +1,8 @@
+.tile {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.tile img{
+  width: 100%;
+}

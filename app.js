@@ -68,7 +68,10 @@ app.post('/login', passport.authenticate('local', {
 
 
 app.get('/', function(req,res){
-    res.render("site/index", {message:null});
+  db.show.findAll()
+    .success(function(shows){
+      res.render('site/index', {shows: shows})
+    })
 });
 
 
