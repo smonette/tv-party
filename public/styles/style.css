@@ -1,8 +1,59 @@
-.tile {
-  overflow: hidden;
-  margin-top: 20px;
+/* General Styles */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+  background: url('../images/grey.png') 0 0 repeat;
+  font-family: 'Open Sans', sans-serif;
+}
+button:focus, a:focus {outline:0 !important;}
+/* Header */
+header button.btn-link {
+  color: #fff !important;
+  float: right;
+  margin-top: 15px;
+  font-size: 18px;
+}
+header .intro-bar {
+  margin-top: 70px;
+  background-color: rgba(140,175,197, 1);
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 0;
+}
+header .intro-bar a {
+  color: #fff;
+  padding-left: 10px;
+}
+header h1 {
+  height: 50px;
+  margin-top: 10px;
+  text-indent: -9999px;
+  background: url('../images/logo.png') 0 0 no-repeat;
 }
 
+
+/* Homepage */
+.my-slide {
+ box-shadow: 2px 3px 10px rgba(0,0,0,0.7);
+}
+.tile {
+  overflow: hidden;
+  margin-top: 35px;
+}
 .tile img{
+  border: 1px solid #ccc;
+  box-shadow: 1px 5px 10px rgba(0,0,0,0.3);
   width: 100%;
+}
+
+/* Footer */
+footer .footer-bar {
+  margin-top: 30px;
+  padding: 20px 0;
+  background-color: rgba(140,175,197, 1);
+  text-align: center;
+}
+footer .footer-bar a {
+  color: #fff;
+  padding: 0 5px;
 }

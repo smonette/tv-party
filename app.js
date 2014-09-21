@@ -74,6 +74,9 @@ app.get('/', function(req,res){
     })
 });
 
+app.get('/about', function(req,res){
+  res.render('site/about')
+});
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("local hosties");
