@@ -78,6 +78,19 @@ app.get('/about', function(req,res){
   res.render('site/about')
 });
 
+app.get('/shows/:id', function (req, res) {
+
+    db.show.find({
+      where: {
+        id: req.params.id
+      }
+    })
+    .success(function(foundShow) {
+      res.render("site/show", {show: foundShow});
+    })
+
+});
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("local hosties");
 });
