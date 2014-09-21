@@ -72,16 +72,16 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 
-// app.get('/', function(req,res){
-//   db.show.findAll()
-//     .success(function(shows){
-//       res.render('site/index', {shows: shows})
-//     })
-// });
-
 app.get('/', function(req,res){
-  res.render('socket.ejs')
+  db.show.findAll()
+    .success(function(shows){
+      res.render('site/index', {shows: shows})
+    })
 });
+
+// app.get('/', function(req,res){
+//   res.render('socket.ejs')
+// });
 
 
 app.get('/about', function(req,res){
