@@ -29,8 +29,8 @@ app.use( cookieSession({
 var oauth = new OAuth.OAuth(
   'https://api.twitter.com/oauth/request_token',
   'https://api.twitter.com/oauth/access_token',
-  process.env.TWITTER_KEY,
-  process.env.TWITTER_SECRET,
+  process.env.TV_TWITTER_KEY,
+  process.env.TV_TWITTER_SECRET,
   '1.0A',
   null,
   'HMAC-SHA1'
@@ -118,7 +118,7 @@ app.get('/shows/:id', function (req, res) {
       }
     })
     .success(function(foundShow) {
-       var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitterhandle + "&count=6";
+       var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
             retreieveTweets(url, function(allTweets){
 
                   console.log("ALL TWEETS!!! appjs: ");
