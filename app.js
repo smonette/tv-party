@@ -4,6 +4,7 @@ var express = require('express'),
     methodOverride = require("method-override"),
     passport= require("passport"),
     pasportLocal = require("passport-local"),
+    OAuth = require('oauth'),
     cookieParser = require("cookie-parser"),
     cookieSession = require("cookie-session"),
     _ = require('lodash');
@@ -24,6 +25,17 @@ app.use( cookieSession({
     name: 'cookie created by steph',
     maxage: 60360000
 }) );
+
+var oauth = new OAuth.OAuth(
+  'https://api.twitter.com/oauth/request_token',
+  'https://api.twitter.com/oauth/access_token',
+  process.env.TWITTER_KEY,
+  process.env.TWITTER_SECRET,
+  '1.0A',
+  null,
+  'HMAC-SHA1'
+);
+
 
 // get passport started
 app.use(passport.initialize());
@@ -48,6 +60,16 @@ passport.deserializeUser(function(id, done){
     });
 });
 
+
+//twitter
+
+var retreieveTweets = function(requestUrl, callback) {
+  var allTweets;
+  oauth.get(requestUrl, null, null, function(e, data, res){
+    allTweets = JSON.parse(data);
+    callback(allTweets);
+  });
+}
 
 //CRUD
 // POSTS FOR SIGN UP, LOGIN & EDIT PROFILE
@@ -96,10 +118,23 @@ app.get('/shows/:id', function (req, res) {
       }
     })
     .success(function(foundShow) {
-      res.render("site/show", {show: foundShow});
+       var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitterhandle + "&count=6";
+            retreieveTweets(url, function(allTweets){
+
+                  console.log("ALL TWEETS!!! appjs: ");
+                  console.log(allTweets);
+
+                  console.log("ALL TWEETS[0]!!! appjs: ");
+                  console.log(allTweets[0]);
+      res.render("site/show", {show: foundShow, tweets: allTweets});
+               });
     })
 
 });
+
+
+
+
 
 // connect to socket
 io.on('connection', function(socket){
