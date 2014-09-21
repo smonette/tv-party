@@ -10,15 +10,21 @@
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
+    <div class="carousel-inner my-slide">
       <div class="item active">
-        <img src="http://ib2.huluim.com/show_key_art/11248?size=1600x600&region=US" alt="...">
+        <a href="/shows/18">
+          <img src="http://ib2.huluim.com/show_key_art/11248?size=1600x600&region=US">
+        </a>
       </div>
       <div class="item">
-        <img src="http://ib2.huluim.com/show_key_art/4726?size=1600x600&region=US" alt="...">
+        <a href="/shows/22">
+          <img src="http://ib2.huluim.com/show_key_art/4726?size=1600x600&region=US">
+        </a>
       </div>
       <div class="item">
-        <img src="http://ib1.huluim.com/show_key_art/7529?size=1600x600&region=US" alt="...">
+        <a href="/shows/19">
+          <img src="http://ib1.huluim.com/show_key_art/7529?size=1600x600&region=US">
+        </a>
       </div>
     </div>
 
@@ -39,7 +45,9 @@
     <div class="row">
       <% for(i=0; i<shows.length; i++){ %>
         <div class="col-sm-4 tile">
-          <img src=<%= shows[i].img_url %>/>
+          <a href="/shows/<%= shows[i].id %>">
+            <img src="<%= shows[i].img_url %>"/>
+          </a>
         </div>
       <% } %>
     </div>
@@ -47,29 +55,5 @@
 </div>
 
 
-
-
-
-
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login">
-  Login
-</button>
-
-
-<!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signup">
-  Signup
-</button>
-
-
-<% include ../partials/_signup.ejs %>
-
-<% include ../partials/_login.ejs %>
-
-
-<script type="text/javascript">
-  $('#login').modal(options);
-  $('#signup').modal(options);
-</script>
 
 <% include ../partials/_footer.ejs %>

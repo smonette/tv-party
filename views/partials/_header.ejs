@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>TV Party</title>
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="shortcut icon" href="favicon path" />
      <!-- Latest compiled and minified CSS -->
      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
@@ -18,3 +19,38 @@
   </head>
   <body>
     <div class="container-fluid">
+      <header>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+              <a href="/"><h1>TV Party</h1></a>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-link" data-toggle="modal" data-target="#login">
+                Login
+              </button>
+              <button class="btn btn-link" data-toggle="modal" data-target="#signup">
+                Signup
+              </button>
+            </div>
+          </div>
+        </nav>
+        <div class="row intro-bar">
+          Chat about your favorite shows, with other fans across the world! <a href="" data-toggle="modal" data-target="#signup">Start now &raquo;</a>
+        </div>
+      </header>
+
+
+
+<% include ../partials/_signup.ejs %>
+
+<% include ../partials/_login.ejs %>
+
+
+<script type="text/javascript">
+  $('#login').modal(options);
+  $('#signup').modal(options);
+</script>
