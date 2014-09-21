@@ -6,8 +6,12 @@ var express = require('express'),
     pasportLocal = require("passport-local"),
     cookieParser = require("cookie-parser"),
     cookieSession = require("cookie-session"),
-    _ = require('lodash'),
-    app = express();
+    _ = require('lodash');
+
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 
 app.use(express.static(__dirname + '/public'));
 
@@ -44,6 +48,7 @@ passport.deserializeUser(function(id, done){
     });
 });
 
+
 //CRUD
 // POSTS FOR SIGN UP, LOGIN & EDIT PROFILE
 
@@ -67,12 +72,17 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 
+// app.get('/', function(req,res){
+//   db.show.findAll()
+//     .success(function(shows){
+//       res.render('site/index', {shows: shows})
+//     })
+// });
+
 app.get('/', function(req,res){
-  db.show.findAll()
-    .success(function(shows){
-      res.render('site/index', {shows: shows})
-    })
+  res.render('socket.ejs')
 });
+
 
 app.get('/about', function(req,res){
   res.render('site/about')
@@ -91,7 +101,14 @@ app.get('/shows/:id', function (req, res) {
 
 });
 
-app.listen(process.env.PORT || 3000, function(){
+// connect to socket
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
+http.listen(process.env.PORT || 3000, function(){
   console.log("local hosties");
 });
 
