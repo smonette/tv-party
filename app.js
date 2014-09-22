@@ -75,7 +75,7 @@ var retreieveTweets = function(requestUrl, callback) {
 // POSTS FOR SIGN UP, LOGIN, LOGOUT, & EDIT PROFILE
 app.get('/logout', function(req,res){
   req.logout();
-  res.redirect('/login')
+  res.redirect('/')
 });
 
 app.post('/create', function(req,res){
@@ -101,7 +101,11 @@ app.post('/login', passport.authenticate('local', {
 app.get('/', function(req,res){
   db.show.findAll()
     .success(function(shows){
-      res.render('site/index', {shows: shows, isAuthenticated: req.isAuthenticated()})
+      console.log((new Array(50).join("*")))
+      console.log(req.user)
+      console.log((new Array(50).join("*")))
+      username = req.user !== undefined ? req.user.username : ""
+      res.render('site/index', {shows: shows, isAuthenticated: req.isAuthenticated(), username: username})
     })
 });
 
