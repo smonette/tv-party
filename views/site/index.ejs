@@ -11,21 +11,21 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner my-slide">
-      <div class="item active">
-        <a href="/shows/18">
-          <img src="http://ib2.huluim.com/show_key_art/11248?size=1600x600&region=US">
-        </a>
-      </div>
-      <div class="item">
-        <a href="/shows/22">
-          <img src="http://ib2.huluim.com/show_key_art/4726?size=1600x600&region=US">
-        </a>
-      </div>
-      <div class="item">
-        <a href="/shows/19">
-          <img src="http://ib1.huluim.com/show_key_art/7529?size=1600x600&region=US">
-        </a>
-      </div>
+        <div class="item active">
+          <a href="/shows/<%= shows[1]%>">
+            <img src="<%= shows[1].img_url %>">
+          </a>
+        </div>
+        <div class="item">
+          <a href="/shows/<%= shows[2]%>">
+            <img src="<%= shows[2].img_url %>">
+          </a>
+        </div>
+        <div class="item">
+          <a href="/shows/<%= shows[3]%>">
+            <img src="<%= shows[3].img_url %>">
+          </a>
+        </div>
     </div>
 
     <!-- Controls -->
