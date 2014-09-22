@@ -93,18 +93,14 @@ app.post('/create', function(req,res){
 app.post('/login', passport.authenticate('local', {
   //no req and res. we dont need to because passport is doing the heavy lifting with local
   successRedirect: '/',
-  failureRedirect: '/login'
-  // failureFlash: true
+  failureRedirect: '/'
 }));
 
 
 app.get('/', function(req,res){
   db.show.findAll()
     .success(function(shows){
-      console.log((new Array(50).join("*")))
-      console.log(req.user)
-      console.log((new Array(50).join("*")))
-      username = req.user !== undefined ? req.user.username : ""
+      username = req.user !== undefined ? req.user.username : "";
       res.render('site/index', {shows: shows, isAuthenticated: req.isAuthenticated(), username: username})
     })
 });
@@ -124,17 +120,13 @@ app.get('/shows/:id', function (req, res) {
       var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
       retreieveTweets(url, function(allTweets){
 
-            console.log("ALL TWEETS!!! appjs: ");
-            console.log(allTweets);
-
-            console.log("ALL TWEETS[0]!!! appjs: ");
-            console.log(allTweets[0]);
-
+            username = req.user !== undefined ? req.user.username : "";
 
             res.render("site/show",
             { tweets: allTweets,
               show: foundShow,
-              isAuthenticated: req.isAuthenticated()
+              isAuthenticated: req.isAuthenticated(),
+              username: username
             });
          });
       });

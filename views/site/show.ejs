@@ -12,24 +12,17 @@
           <div class="socket-chat">
             <ul id="messages"></ul>
           </div>
-          <div class="chat-form">
-            <form action="" class="chat-box">
-              <input id="m" autocomplete="off" class="chat-input"/><button class="chat-button">Send</button>
-            </form>
-          </div>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-        <script>
-          var socket = io();
-          $('form').submit(function(){
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
-          });
-          socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
-          });
-        </script>
+           <%  if (isAuthenticated == true) {%>
+              <div class="chat-form">
+                <form action="" class="chat-box">
+                  <input id="m" autocomplete="off" class="chat-input"/><button class="chat-button">Send</button>
+                </form>
+              </div>
+            <% } else { %>
+            <div class="chat-prompt"><a href="" data-toggle="modal" data-target="#signup">Sign up</a> or <a href="" data-toggle="modal" data-target="#login">login</a> to start discussing.</p>
+            </div>
+            <% } %>
+
       </div>
       <div class="col-sm-4 col-sm-offset-1">
         <h3>@<a href="http://www.twitter.com/<%= show.twitter_handle %>"><%= show.twitter_handle %></a></h3>
@@ -45,7 +38,9 @@
   </div>
 </div>
 
-
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="/../scripts/scripts.js"></script>
 <% include ../partials/_footer.ejs %>
 
 
