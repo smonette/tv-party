@@ -130,4 +130,7 @@ footer .footer-bar a {
 #messages li:nth-child(odd) { background: #eee; }
 
 
+.usernameColor{
+  color:rgba(49,119,203, 1);
+}
 

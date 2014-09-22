@@ -17,6 +17,20 @@
                 <form action="" class="chat-box">
                   <input id="m" autocomplete="off" class="chat-input"/><button class="chat-button">Send</button>
                 </form>
+                <script src="/socket.io/socket.io.js"></script>
+                <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+                <script>
+                 var socket = io();
+                 $('form').submit(function(){
+                   socket.emit('chat message', $('#m').val());
+                   $('#m').val('');
+                   return false;
+                 });
+                 socket.on('chat message', function(msg){
+                   var $userMessage =
+                   $('#messages').append($('<li>').html("<span class='usernameColor'><%=username%></span> "+ msg));
+                 });
+               </script>
               </div>
             <% } else { %>
             <div class="chat-prompt"><a href="" data-toggle="modal" data-target="#signup">Sign up</a> or <a href="" data-toggle="modal" data-target="#login">login</a> to start discussing.</p>
@@ -38,9 +52,7 @@
   </div>
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script src="/../scripts/scripts.js"></script>
+
 <% include ../partials/_footer.ejs %>
 
 
