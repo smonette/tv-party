@@ -101,34 +101,60 @@ app.get('/', function(req,res){
     })
 });
 
-// app.get('/', function(req,res){
-//   res.render('socket.ejs')
-// });
-
-
 app.get('/about', function(req,res){
   res.render('site/about')
 });
 
+// app.get('/shows/:id', function (req, res) {
+
+//     db.show.find({
+//       where: {
+//         id: req.params.id
+//       }
+//     })
+//     .success(function(foundShow) {
+//        var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
+//             retreieveTweets(url, function(allTweets){
+
+//                   console.log("ALL TWEETS!!! appjs: ");
+//                   console.log(allTweets);
+
+//                   console.log("ALL TWEETS[0]!!! appjs: ");
+//                   console.log(allTweets[0]);
+//       res.render("site/show", {show: foundShow, tweets: allTweets});
+//                });
+//     })
+
+// });
+
+
+
+
 app.get('/shows/:id', function (req, res) {
 
-    db.show.find({
-      where: {
-        id: req.params.id
-      }
-    })
-    .success(function(foundShow) {
-       var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
-            retreieveTweets(url, function(allTweets){
+  db.show.find({
+    where: {
+      id: req.params.id
+    }
+  }) .success( function(foundShow){
 
-                  console.log("ALL TWEETS!!! appjs: ");
-                  console.log(allTweets);
+      var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
+      retreieveTweets(url, function(allTweets){
 
-                  console.log("ALL TWEETS[0]!!! appjs: ");
-                  console.log(allTweets[0]);
-      res.render("site/show", {show: foundShow, tweets: allTweets});
-               });
-    })
+            console.log("ALL TWEETS!!! appjs: ");
+            console.log(allTweets);
+
+            console.log("ALL TWEETS[0]!!! appjs: ");
+            console.log(allTweets[0]);
+
+
+            res.render("site/show",
+            { tweets: allTweets,
+              show: foundShow,
+            });
+         });
+      });
+
 
 });
 

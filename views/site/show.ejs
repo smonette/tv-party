@@ -1,7 +1,6 @@
 <% include ../partials/_header.ejs%>
 <div class="row">
-  <div class="row">
-    <div class="col-sm-12 large-tile">
+  <div class="row large-tile">
       <img src="<%=show.img_url%>">
     </div>
   </div>
@@ -32,11 +31,11 @@
         </script>
       </div>
       <div class="col-sm-4 col-sm-offset-1">
-        <h3>What's new with <a href="http://www.twitter.com/<%= show.twitter_handle %>"><%= show.twitter_handle %></a></h3>
+        <h3>@<a href="http://www.twitter.com/<%= show.twitter_handle %>"><%= show.twitter_handle %></a></h3>
           <ul class="tweet-stream">
             <% for(i = 0; i < tweets.length; i++) { %>
               <li class="tweet">
-                <p><a href="http://twitter.com/<%= tweets[0].show.screen_name %>/status/<%= tweets[i].id_str %>"><%= tweets[i].text %></a></p>
+                <p><a href="http://twitter.com/<%= tweets[0].user.screen_name %>/status/<%= tweets[i].id_str %>"><%= tweets[i].text %></a></p>
               </li>
             <% } %>
           </ul>
