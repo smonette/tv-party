@@ -1,16 +1,17 @@
-var socket = io();
+
+
+
+$(document).ready( function(){
+  var socket = io();
   $('form.chat-box').submit(function(){
     socket.emit('chat message', $('#m').val());
     $('#m').val('');
     return false;
   });
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+
+    $('#messages').append($('<li>').html("<span class='usernameColor'><%=username%></span> "+ msg));
   });
-
-
-
-$(document).ready( function(){
 
   //Getting the element's new height now
   var sHeight = $('ul#messages')[0].scrollHeight;

@@ -116,7 +116,7 @@ app.get('/shows/:id', function (req, res) {
       id: req.params.id
     }
   }) .success( function(foundShow){
-
+      username = req.user !== undefined ? req.user.username : ""
       var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
       retreieveTweets(url, function(allTweets){
 
