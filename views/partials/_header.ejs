@@ -31,10 +31,12 @@
 
             </div>
               <div class="col-sm-4">
-                <%  if (isAuthenticated === true) {%>
-                   <a class="btn btn-link" href="/logout">
+                <%  if (isAuthenticated == true) {%>
+                <button class="btn btn-link">
+                   <a href="/logout">
                     Logout
                   </a>
+                </button>
                 <% } else { %>
                   <button class="btn btn-link" data-toggle="modal" data-target="#login">
                     Login
@@ -48,7 +50,11 @@
         </nav>
 
         <div class="row intro-bar">
+          <%  if (isAuthenticated == true) {%>
+          Welcome home <%= username %>!
+          <% } else { %>
           Chat about your favorite shows, with other fans across the world! <a href="" data-toggle="modal" data-target="#signup">Start now &raquo;</a>
+          <% } %>
         </div>
 
       </header>
