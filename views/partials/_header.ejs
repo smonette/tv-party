@@ -30,14 +30,20 @@
             <div class="col-sm-2">
 
             </div>
-            <div class="col-sm-4">
-              <button class="btn btn-link" data-toggle="modal" data-target="#login">
-                Login
-              </button>
-              <button class="btn btn-link" data-toggle="modal" data-target="#signup">
-                Signup
-              </button>
-            </div>
+              <div class="col-sm-4">
+                <%  if (isAuthenticated == true) {%>
+                   <a class="btn btn-link" href="/logout">
+                    Logout
+                  </a>
+                <% } else { %>
+                  <button class="btn btn-link" data-toggle="modal" data-target="#login">
+                    Login
+                  </button>
+                  <button class="btn btn-link" data-toggle="modal" data-target="#signup">
+                    Signup
+                  </button>
+                <% } %>
+              </div>
           </div>
         </nav>
 

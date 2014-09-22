@@ -97,38 +97,13 @@ app.post('/login', passport.authenticate('local', {
 app.get('/', function(req,res){
   db.show.findAll()
     .success(function(shows){
-      res.render('site/index', {shows: shows})
+      res.render('site/index', {shows: shows, isAuthenticated: req.isAuthenticated()})
     })
 });
 
 app.get('/about', function(req,res){
-  res.render('site/about')
+  res.render('site/about', {isAuthenticated: req.isAuthenticated()})
 });
-
-// app.get('/shows/:id', function (req, res) {
-
-//     db.show.find({
-//       where: {
-//         id: req.params.id
-//       }
-//     })
-//     .success(function(foundShow) {
-//        var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
-//             retreieveTweets(url, function(allTweets){
-
-//                   console.log("ALL TWEETS!!! appjs: ");
-//                   console.log(allTweets);
-
-//                   console.log("ALL TWEETS[0]!!! appjs: ");
-//                   console.log(allTweets[0]);
-//       res.render("site/show", {show: foundShow, tweets: allTweets});
-//                });
-//     })
-
-// });
-
-
-
 
 app.get('/shows/:id', function (req, res) {
 
@@ -151,6 +126,7 @@ app.get('/shows/:id', function (req, res) {
             res.render("site/show",
             { tweets: allTweets,
               show: foundShow,
+              isAuthenticated: req.isAuthenticated()
             });
          });
       });
