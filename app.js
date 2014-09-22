@@ -72,24 +72,28 @@ var retreieveTweets = function(requestUrl, callback) {
 }
 
 //CRUD
-// POSTS FOR SIGN UP, LOGIN & EDIT PROFILE
+// POSTS FOR SIGN UP, LOGIN, LOGOUT, & EDIT PROFILE
+app.get('/logout', function(req,res){
+  req.logout();
+  res.redirect('/login')
+});
 
 app.post('/create', function(req,res){
   // have to call my create new user functions
   db.user.createNewUser(req.body.username,req.body.email, req.body.password,
     function(err){
-      res.render("site/index", { message: err.message, email: req.body.email});
+      res.render("site/index", { message: err.message, email: req.body.email, shows:[]});
     },
     function(success){
-      res.render('site/index', {message: "Success! ", username:req.body.username});
+      res.redirect('/');
     });
 
 });
 
 app.post('/login', passport.authenticate('local', {
   //no req and res. we dont need to because passport is doing the heavy lifting with local
-  successRedirect: '/home',
-  failureRedirect: '/login',
+  successRedirect: '/',
+  failureRedirect: '/login'
   // failureFlash: true
 }));
 
