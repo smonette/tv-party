@@ -45,6 +45,15 @@ header h1 {
   width: 100%;
 }
 
+/*Individual show pages*/
+.large-tile{
+
+}
+.large-tile img{
+  width: 100%;
+  overflow:hidden;
+}
+
 /* Footer */
 footer .footer-bar {
   margin-top: 30px;
@@ -56,3 +65,49 @@ footer .footer-bar a {
   color: #fff;
   padding: 0 5px;
 }
+
+/*styling for socket-io chat box*/
+
+.socket-chat {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border:7px solid;
+  background-color:white;
+  box-shadow: 1px 5px 10px rgba(0,0,0,0.3);
+
+}
+.chat-input{
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: .5%;
+}
+.chat-box{
+  background: #000; padding: 3px; width: 100%;
+  margin-top: 5px;
+  border:3px solid;
+}
+.chat-button{
+  width: 9.3%;
+  background: rgba(140,175,197, 1);
+  background: black;
+  border: none;
+  color: white;
+}
+.chat-form{
+  box-shadow: 1px 5px 10px rgba(0,0,0,0.3);
+}
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  min-height: 400px;
+  max-height: 400px;
+}
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+
+
+
