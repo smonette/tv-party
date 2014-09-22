@@ -93,8 +93,7 @@ app.post('/create', function(req,res){
 app.post('/login', passport.authenticate('local', {
   //no req and res. we dont need to because passport is doing the heavy lifting with local
   successRedirect: '/',
-  failureRedirect: '/login'
-  // failureFlash: true
+  failureRedirect: '/'
 }));
 
 

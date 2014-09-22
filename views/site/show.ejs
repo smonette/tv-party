@@ -12,11 +12,16 @@
           <div class="socket-chat">
             <ul id="messages"></ul>
           </div>
-          <div class="chat-form">
-            <form action="" class="chat-box">
-              <input id="m" autocomplete="off" class="chat-input"/><button class="chat-button">Send</button>
-            </form>
-          </div>
+           <%  if (isAuthenticated == true) {%>
+              <div class="chat-form">
+                <form action="" class="chat-box">
+                  <input id="m" autocomplete="off" class="chat-input"/><button class="chat-button">Send</button>
+                </form>
+              </div>
+            <% } else { %>
+            <div class="chat-prompt"><a href="" data-toggle="modal" data-target="#signup">Sign up</a> or <a href="" data-toggle="modal" data-target="#login">login</a> to start discussing.</p>
+            </div>
+            <% } %>
 
       </div>
       <div class="col-sm-4 col-sm-offset-1">

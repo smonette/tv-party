@@ -6,7 +6,7 @@ var passportLocal = require("passport-local");
 
 module.exports = function (sequelize, DataTypes){
 
-  var User = sequelize.define('user',{
+    var User = sequelize.define('user',{
       username: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes){
 
     {
     classMethods: {
-      encryptPass: function(password) {
+       encryptPass: function(password) {
         var hash = bcrypt.hashSync(password, salt);
         return hash;
       },
@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes){
       // don't salt twice when you compare....watch out for this
         return bcrypt.compareSync(userpass, dbpass);
     },
-      createNewUser:function(username, email,  password, err, success ) {
+      createNewUser:function(username, email, password, err, success ) {
         if(password.length < 6) {
           err({message: "Password should be more than six characters"});
         }
@@ -88,11 +88,11 @@ module.exports = function (sequelize, DataTypes){
       .done(function(error,user){
         if(error){
           console.log(error)
-          // return done(err, req.flash('loginMessage', 'Oops! Something went wrong!'))
+          return done(err)
         } if (user === null) {
-          // return done(null, false, req.flash('loginMessage', 'Invalid email'));
+          return done(null, false);
         } if((User.comparePass(password, user.password)) !== true) {
-          // return done(null, false, req.flash('loginMessage', 'Invalid password'));
+          return done(null, false );
         }
         done(null, user);
       })
@@ -101,3 +101,4 @@ module.exports = function (sequelize, DataTypes){
   return User;
 
 };
+
