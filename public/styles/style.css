@@ -88,6 +88,18 @@ footer .footer-bar a {
   float:left;
   margin: 0 20px 10px 0;
 }
+
+/*imdb photo*/
+.url-photo{
+  /*height: 5%;
+  width: 5%;*/
+}
+
+.plot-actor-box{
+  margin-top:30px;
+  height:100px;
+  overflow-y: scroll;
+}
 /*styling for socket-io chat box*/
 
 .socket-chat {

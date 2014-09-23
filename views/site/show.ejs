@@ -6,9 +6,39 @@
     </div>
   </div>
   <div class="col-sm-10 col-sm-offset-1">
-    <div class="row  show-box">
-      <div class="col-sm-4"></div>
-      <div class="col-sm-8"></div>
+    <div class="row  show-box plot-actor-box">
+
+      <div class="col-sm-4">
+        <%= imdb.plot %>
+      </div>
+
+      <div class="col-sm-8">
+        <!-- imbd logo -->
+        <img src="http://50.23.215.211/~agilardi/img/footer-imdb.png">
+        <!-- actors photos and imdb links -->
+        <% if (imdb.actors.length >= 4 ){ %>
+          <% for (var i=0; i<4; i++) { %>
+            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
+            <%= imdb.actors[i].actorName %>
+          <% } %>
+        <% } else if (imdb.actors.length >= 3 ){ %>
+          <% for (var i=0; i<3; i++) { %>
+            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
+            <%= imdb.actors[i].actorName %>
+          <% } %>
+        <% }  else if (imdb.actors.length >= 2 ){ %>
+          <% for (var i=0; i<2; i++) { %>
+            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
+            <%= imdb.actors[i].actorName %>
+          <% } %>
+        <% } else { %>
+          <% for (var i=0; i<1; i++) { %>
+            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
+            <%= imdb.actors[i].actorName %>
+          <% } %>
+        <% } %>
+      </div>
+
     </div>
     <div class="row">
       <div class="col-sm-4">
