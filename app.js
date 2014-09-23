@@ -116,8 +116,9 @@ app.get('/shows/:id', function (req, res) {
       id: req.params.id
     }
   }) .success( function(foundShow){
+      // extract all of the replies on the database and push to page
       username = req.user !== undefined ? req.user.username : ""
-      var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=6";
+      var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=5";
       retreieveTweets(url, function(allTweets){
 
             username = req.user !== undefined ? req.user.username : "";
@@ -127,6 +128,7 @@ app.get('/shows/:id', function (req, res) {
               show: foundShow,
               isAuthenticated: req.isAuthenticated(),
               username: username
+              // imdb: imdb
             });
          });
       });
@@ -142,6 +144,7 @@ app.get('/shows/:id', function (req, res) {
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+    //set the key value pair on redis
   });
 });
 
