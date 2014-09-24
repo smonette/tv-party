@@ -6,8 +6,8 @@ module.exports = function (sequelize, DataTypes){
         unique: true
       },
       show_id: {
-        type: DataTypes.STRING,
-        foreignKey: true
+        type: DataTypes.STRING
+        // foreignKey: true
       },
       username: DataTypes.STRING,
       text: DataTypes.STRING

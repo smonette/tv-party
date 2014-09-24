@@ -209,6 +209,7 @@ io.on('connection', function(socket){
     console.log("\t\t\tSIGNED IN: CHATS")
     if(socket.request.user.name = username){
       msgObj = JSON.parse(msg)
+      console.log("msgObj", msgObj)
       db.chat.create(msgObj)
       .success(function(chat){
         io.emit('chat message', msg);

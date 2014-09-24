@@ -8,8 +8,8 @@ module.exports = {
         autoIncrement: true
       },
       show_id: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
+        type: DataTypes.INTEGER
+        // foreignKey: true
       },
       username: {
         type: DataTypes.STRING,
