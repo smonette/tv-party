@@ -18,6 +18,3 @@
     "database": "d5tu4jebrs51r1"
   }
 }
-
-
-process.env.TV_TWITTER_KEY,
