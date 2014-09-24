@@ -155,7 +155,6 @@ app.get('/about', function(req,res){
 
 
 
-
 app.get('/shows/:id', function (req, res) {
 
   db.show.find({
@@ -164,8 +163,14 @@ app.get('/shows/:id', function (req, res) {
     }
   })
   .success(function(foundShow){
+      db.chat.findAll({
+        where:
+          {show_id: req.params.id
+        }
+      }).success(function(chatData){
 
           var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=5";
+
           retreieveTweets(url, function(allTweets){
 
             username = req.user !== undefined ? req.user.username : "";
@@ -173,11 +178,14 @@ app.get('/shows/:id', function (req, res) {
               { tweets: allTweets,
                 show: foundShow,
                 isAuthenticated: req.isAuthenticated(),
-                username: username
+                username: username,
+                chat: chatData
               }); // render
             });//retreive tweets
-        })
-  });
+      })
+  })
+});
+
 
 
 // io.use(cookieSession({
@@ -205,11 +213,13 @@ io.use(function(socket, next){
 })
 // connect to socket
 io.on('connection', function(socket){
+
+
   socket.on('chat message', function(msg){
     console.log("\t\t\tSIGNED IN: CHATS")
     if(socket.request.user.name = username){
       msgObj = JSON.parse(msg)
-      console.log("msgObj", msgObj)
+      // console.log("msgObj", msgObj)
       db.chat.create(msgObj)
       .success(function(chat){
         io.emit('chat message', msg);
