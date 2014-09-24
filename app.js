@@ -10,7 +10,7 @@ var express = require('express'),
     _ = require('lodash');
 var request = require("request");
 var app = require('express')();
-var http = require('http').Server(app);
+var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var cookie = require("cookie")
 var atob = require("atob")
@@ -238,4 +238,3 @@ http.listen(process.env.PORT || 3000, function(){
   console.log("local hosties");
 });
 
-module.exports = app;
