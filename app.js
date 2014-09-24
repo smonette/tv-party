@@ -106,7 +106,6 @@ app.post('/login', passport.authenticate('local', {
 
 
 app.get('/', function(req,res){
-  console.log(req)
   db.show.findAll()
     .success(function(shows){
       username = req.user !== undefined ? req.user.username : "";
@@ -117,43 +116,6 @@ app.get('/', function(req,res){
 app.get('/about', function(req,res){
   res.render('site/about', {isAuthenticated: req.isAuthenticated()})
 });
-
-
-
-//includes myImdb
-// app.get('/shows/:id', function (req, res) {
-
-//   db.show.find({
-//     where: {
-//       id: req.params.id
-//     }
-//   })
-//   .success(function(foundShow){
-//       var myImdb ="http://www.myapifilms.com/imdb?idIMDB=" + foundShow.imdb_id + "&format=JSON&lang=en-us&actors=S&biography=0&trailer=0&uniqueName=0&filmography=0&bornDied=0&actorActress=0&actorTrivia=0";
-//       // var myImdb = "http://www.google.com"
-//       request(myImdb, function(error, response, body){
-//         var imdbData = JSON.parse(body)
-//         if (!error && response.statusCode == 200) {
-//           console.log(body) // Print the google web page.
-//             var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=5";
-
-//           retreieveTweets(url, function(allTweets){
-
-//             username = req.user !== undefined ? req.user.username : "";
-//             res.render("site/show",
-//               { tweets: allTweets,
-//                 show: foundShow,
-//                 isAuthenticated: req.isAuthenticated(),
-//                 username: username,
-//                 imdb: imdbData
-//               }); // render
-//             });//retreive tweets
-//         }
-//       })
-//   })
-// });
-
-
 
 app.get('/shows/:id', function (req, res) {
 
