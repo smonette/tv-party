@@ -9,34 +9,13 @@
     <div class="row  show-box plot-actor-box">
 
       <div class="col-sm-4">
-        <%= imdb.plot %>
       </div>
 
       <div class="col-sm-8">
         <!-- imbd logo -->
-        <img src="http://50.23.215.211/~agilardi/img/footer-imdb.png">
+        <!-- <img src="http://50.23.215.211/~agilardi/img/footer-imdb.png"> -->
         <!-- actors photos and imdb links -->
-        <% if (imdb.actors.length >= 4 ){ %>
-          <% for (var i=0; i<4; i++) { %>
-            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
-            <%= imdb.actors[i].actorName %>
-          <% } %>
-        <% } else if (imdb.actors.length >= 3 ){ %>
-          <% for (var i=0; i<3; i++) { %>
-            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
-            <%= imdb.actors[i].actorName %>
-          <% } %>
-        <% }  else if (imdb.actors.length >= 2 ){ %>
-          <% for (var i=0; i<2; i++) { %>
-            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
-            <%= imdb.actors[i].actorName %>
-          <% } %>
-        <% } else { %>
-          <% for (var i=0; i<1; i++) { %>
-            <a href="<%= imdb.actors[i].urlProfile%>"><img class="url-photo" src="<%= imdb.actors[i].urlPhoto%>"></a>
-            <%= imdb.actors[i].actorName %>
-          <% } %>
-        <% } %>
+
       </div>
 
     </div>
@@ -59,20 +38,30 @@
            <%  if (isAuthenticated == true) {%>
               <div class="chat-form">
                 <form action="" class="chat-box">
-                  <input id="m" autocomplete="off" class="chat-input"/><button class="chat-button">Send</button>
+                  <input type="hidden" name="show_id" value="<%=show.id%>"/>
+                  <input type="hidden" name="username" value="<%=username%>"/>
+                  <input id="m" autocomplete="off" name="text" class="chat-input"/><button class="chat-button">Send</button>
                 </form>
                 <script src="/socket.io/socket.io.js"></script>
                 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
                 <script>
+                  //alert(document.cookie)
                  var socket = io();
-                 $('form').submit(function(){
-                   socket.emit('chat message', $('#m').val());
+                 $('form').submit(function(event){
+                  event.preventDefault()
+                   var message = {
+                      text: $('#m').val(),
+                      showId: <%= show.id %>,
+                      username: "<%= username %>"
+                    };
+                   socket.emit('chat message', JSON.stringify(message));
                    $('#m').val('');
                    return false;
                  });
-                 socket.on('chat message', function(msg){
+                 socket.on('chat message', function(msgStr){
+                   var msgObj = JSON.parse(msgStr);
                    var $userMessage =
-                   $('#messages').append($('<li>').html("<span class='usernameColor'><%=username%></span> "+ msg));
+                   $('#messages').append($('<li>').html("<span class='usernameColor'>" + msgObj.username + "</span> "+ msgObj.text));
                  });
                </script>
               </div>
