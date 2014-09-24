@@ -33,7 +33,11 @@
       <div class="col-sm-8">
         <h2>Chat about <%= show.name  %></h2>
           <div class="socket-chat show-box">
-            <ul id="messages"></ul>
+            <ul id="messages">
+              <% for(i=0; i < chat.length; i++) { %>
+                <li><%= chat[i].username %>: <%= chat[i].text %></li>
+              <% } %>
+            </ul>
           </div>
            <%  if (isAuthenticated == true) {%>
               <div class="chat-form">
@@ -45,13 +49,14 @@
                 <script src="/socket.io/socket.io.js"></script>
                 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
                 <script>
+
                   //alert(document.cookie)
                  var socket = io();
                  $('form').submit(function(event){
                   event.preventDefault()
                    var message = {
                       text: $('#m').val(),
-                      showId: <%= show.id %>,
+                      show_id: <%= show.id %>,
                       username: "<%= username %>"
                     };
                    socket.emit('chat message', JSON.stringify(message));
