@@ -73,12 +73,6 @@ var retreieveTweets = function(requestUrl, callback) {
   });
 }
 
-//imdb
-
-// var retrieveImdb = function(url) {
-
-// };
-
 //CRUD
 // POSTS FOR SIGN UP, LOGIN, LOGOUT, & EDIT PROFILE
 app.get('/logout', function(req,res){
@@ -134,7 +128,6 @@ app.get('/shows/:id', function (req, res) {
           var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=5";
 
           retreieveTweets(url, function(allTweets){
-            console.log(allTweets)
             username = req.user !== undefined ? req.user.username : "";
             res.render("site/show",
               { tweets: allTweets,
@@ -148,13 +141,19 @@ app.get('/shows/:id', function (req, res) {
   })
 });
 
+// ERROR PAGE
+
+app.get('/*', function (req, res) {
+
+  username = req.user !== undefined ? req.user.username : "";
+    res.render("site/404",
+      { isAuthenticated: req.isAuthenticated(),
+        username: username
+      }); // render
+
+});
 
 
-// io.use(cookieSession({
-//     secret: 'thisismysecretkey',
-//     name: 'cookie created by steph',
-//     maxage: 60360000
-// }))
 
 io.use(function(socket, next){
   console.log("Authenticating Req")
