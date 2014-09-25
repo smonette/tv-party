@@ -35,6 +35,7 @@
                 <script src="/socket.io/socket.io.js"></script>
                 <script>
                  var socket = io();
+                 var show = $("#theShow").val();
                  $('form').submit(function(event){
                   event.preventDefault()
                    var message = {
@@ -42,7 +43,6 @@
                       show_id: <%= show.id %>,
                       username: "<%= username %>"
                     };
-                   var show = $("#theShow").val();
                     if (message.show_id === show){
                       socket.emit('chat message', JSON.stringify(message));
                     }
