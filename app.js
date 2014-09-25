@@ -183,7 +183,9 @@ io.on('connection', function(socket){
       // console.log("msgObj", msgObj)
       db.chat.create(msgObj)
       .success(function(chat){
-        io.emit('chat message', msg);
+        // io.emit('chat message', msg);
+        var room = chat.show_id
+        io.sockets.in(room).emit('message',msg);
       })
 
     } else {
