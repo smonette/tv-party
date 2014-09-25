@@ -134,7 +134,7 @@ app.get('/shows/:id', function (req, res) {
           var url = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=" + foundShow.twitter_handle + "&count=5";
 
           retreieveTweets(url, function(allTweets){
-
+            console.log(allTweets)
             username = req.user !== undefined ? req.user.username : "";
             res.render("site/show",
               { tweets: allTweets,
