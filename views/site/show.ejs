@@ -43,8 +43,7 @@
                       username: "<%= username %>"
                     };
                    var show = $("#theShow").val();
-                   var messageID = message.show_id;
-                    if (messageID === show){
+                    if (message.show_id === show){
                       socket.emit('chat message', JSON.stringify(message));
                     }
                    $('#m').val('');
