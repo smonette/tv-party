@@ -115,7 +115,7 @@ app.get('/shows/:id', function (req, res) {
 
   db.show.find({
     where: {
-      var id: req.params.id
+      id: req.params.id
     }
   })
   .success(function(foundShow){
@@ -183,9 +183,7 @@ io.on('connection', function(socket){
       db.chat.create(msgObj)
       .success(function(chat){
         var room = chat.show_id
-        if (room === id ){
-          io.emit('chat message', msg);
-        }
+        io.emit('chat message', msg);
         // io.sockets.in(room).emit('message',msg);
       })
 
