@@ -38,3 +38,26 @@ VALUES
 INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
 VALUES
   ('Scandal','tt1837576','http://ib3.huluim.com/show_key_art/9673?size=1600x600&region=US','ScandalABC','http://en.wikipedia.org/wiki/Scandal_(TV_series)');
+INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
+VALUES
+  ('South Park','tt0121955','http://ib.huluim.com/assets/new-mastheads/sprk_headsup_multi_mh_nd.png?size=1600x600','SouthPark','http://en.wikipedia.org/wiki/South_Park');
+
+INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
+VALUES
+  ('The Daily Show with Jon Stewart','tt0115147','http://ib1.huluim.com:80/show_key_art/902?size=1600x600&region=US','TheDailyShow','http://en.wikipedia.org/wiki/The_Daily_Show');
+
+INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
+VALUES
+  ('Parks and Recreation','tt1266020','http://ib2.huluim.com/show_key_art/1968?size=1600x600&region=US','parksandrecnbc','http://en.wikipedia.org/wiki/Parks_and_Recreation');
+
+INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
+VALUES
+  ('Brooklyn Nine-Nine','tt2467372','http://ib3.huluim.com:80/show_key_art/15137?size=1600x600&region=US','Brooklyn99FOX','http://en.wikipedia.org/wiki/Brooklyn_Nine-Nine');
+
+INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
+VALUES
+  ('Modern Family','tt1442437','http://ib3.huluim.com/show_key_art/2553?size=1600x600&region=US','ModernFam','http://en.wikipedia.org/wiki/Modern_Family');
+
+INSERT INTO shows (name, imdb_id, img_url, twitter_handle, wiki_link)
+VALUES
+  ('The Simpsons','tt0096697','http://ib3.huluim.com/show_key_art/58?region=US&size=1600x600','TheSimpsons','http://en.wikipedia.org/wiki/The_Simpsons');
