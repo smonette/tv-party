@@ -42,7 +42,9 @@
                       show_id: <%= show.id %>,
                       username: "<%= username %>"
                     };
-                   socket.emit('chat message', JSON.stringify(message));
+                    if (message.show_id === show.id){
+                       socket.emit('chat message', JSON.stringify(message));
+                    }
                    $('#m').val('');
                    return false;
                  });
