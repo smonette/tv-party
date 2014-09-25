@@ -22,7 +22,7 @@
           <div class="socket-chat show-box">
             <ul id="messages">
               <% for(i=0; i < chat.length; i++) { %>
-                <li><%= chat[i].username %>: <%= chat[i].text %></li>
+                <li><span class="usernameColor"><%= chat[i].username %></span> <%= chat[i].text %></li>
               <% } %>
             </ul>
           </div>

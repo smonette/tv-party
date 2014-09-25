@@ -146,5 +146,6 @@ footer .footer-bar a {
 
 .usernameColor{
   color:rgba(49,119,203, 1);
+  font-weight: bold;
 }
 
