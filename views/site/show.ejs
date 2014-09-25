@@ -43,16 +43,18 @@
                       show_id: <%= show.id %>,
                       username: "<%= username %>"
                     };
-                    if (message.show_id === show){
-                      socket.emit('chat message', JSON.stringify(message));
-                    }
+                    socket.emit('chat message', JSON.stringify(message));
                    $('#m').val('');
                    return false;
                  });
                  socket.on('chat message', function(msgStr){
                    var msgObj = JSON.parse(msgStr);
-                   var $userMessage =
-                   $('#messages').append($('<li>').html("<span class='usernameColor'>" + msgObj.username + "</span> "+ msgObj.text));
+
+                   if (msgObj.show_id === <%=show.id%> ){
+
+                     $('#messages').append($('<li>').html("<span class='usernameColor'>" + msgObj.username + "</span> "+ msgObj.text));
+                   }
+
                  });
                </script>
               </div>
