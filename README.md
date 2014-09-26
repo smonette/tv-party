@@ -3,7 +3,7 @@
 ## Overview
 TV Portal is a Node.js project that allows tv fans across the world to connect and discuss their favorite shows.
 
-[View on Heroku &raquo;](#)
+[View on Heroku &raquo;](http://tv-party.herokuapp.com/)
 
 ## Motivation
 
